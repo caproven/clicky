@@ -9,7 +9,7 @@
 <body>
     <div>
         <h1>Trust me, click that button down below.</h1>
-        <button id="incr_button" onclick="send()">Click me</button>
+        <button id="incr_button" onclick="increment()">Click me</button>
         <p id="count">0</p>
         <p>Status: <span id="status">connecting</span></p>
     </div>
@@ -17,7 +17,7 @@
         let status = document.getElementById("status")
         let count = document.getElementById("count")
         let btn = document.getElementById("incr_button")
-        let socket = new WebSocket("ws://localhost:8080/clicky")
+        let socket = new WebSocket(((window.location.protocol === "https:") ? "wss://" : "ws://") + window.location.host + "/clicky")
 
         btn.disabled = true
 
@@ -37,8 +37,8 @@
             count.innerHTML = e.data
         }
 
-        function send() {
-            socket.send(count.innerText)
+        function increment() {
+            socket.send("incr")
         }
     </script>
 </body>
