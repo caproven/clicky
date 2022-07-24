@@ -1,0 +1,4 @@
+github.com/caproven/bytesize v0.0.0-20220527004713-319079d20a17 h1:0zBjPRa+aFnIcMdNw4Z0bn7HTVu8+TCVQlIAW3ksPlI=
+github.com/caproven/bytesize v0.0.0-20220527004713-319079d20a17/go.mod h1:/bx8qMjNN6i4RMTrFb5Knt5Mgi0iUlakOqPx3drlH4g=
+github.com/gorilla/websocket v1.5.0 h1:PPwGk2jz7EePpoHN/+ClbZu8SPxiqlu12wZP/3sWmnc=
+github.com/gorilla/websocket v1.5.0/go.mod h1:YR8l580nyteQvAITg2hZ9XVh4b55+EU/adAjf1fMHhE=
