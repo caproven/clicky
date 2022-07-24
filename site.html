@@ -9,22 +9,28 @@
 <body>
     <div>
         <h1>Trust me, click that button down below.</h1>
-        <button onclick="send()">Click me</button>
+        <button id="incr_button" onclick="send()">Click me</button>
         <p id="count">0</p>
         <p>Status: <span id="status">connecting</span></p>
     </div>
     <script>
         let status = document.getElementById("status")
         let count = document.getElementById("count")
+        let btn = document.getElementById("incr_button")
         let socket = new WebSocket("ws://localhost:8080/clicky")
 
+        btn.disabled = true
+
         socket.onopen = function() {
+            btn.disabled = false
             status.innerHTML = "connected"
         }
         socket.onclose = function() {
+            btn.disabled = true
             status.innerHTML = "closed"
         }
         socket.onerror = function() {
+            btn.disabled = true
             status.innerHTML = "error"
         }
         socket.onmessage = function(e) {
