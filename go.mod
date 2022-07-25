@@ -1,4 +1,4 @@
-module github.com/caproven/clicky/server
+module github.com/caproven/clicky
 
 go 1.18
 
