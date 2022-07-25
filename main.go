@@ -17,7 +17,7 @@ var pool = connPool{
 	m:     &sync.Mutex{},
 }
 
-var count uint64 = 0
+var count uint64
 
 type connPool struct {
 	conns map[*websocket.Conn]bool // stored as map to simplify removal
@@ -62,15 +62,14 @@ func main() {
 		conn.WriteMessage(websocket.TextMessage, []byte(fmt.Sprint(count)))
 
 		for {
-			mt, message, err := conn.ReadMessage()
+			// for now, all messages indicate an increment
+			mt, _, err := conn.ReadMessage()
 			if err != nil {
 				if websocket.IsUnexpectedCloseError(err, websocket.CloseGoingAway, websocket.CloseAbnormalClosure) {
 					log.Printf("error: %v", err)
 				}
 				break
 			}
-			input := string(message)
-			log.Println("got message:", input)
 
 			atomic.AddUint64(&count, 1)
 
